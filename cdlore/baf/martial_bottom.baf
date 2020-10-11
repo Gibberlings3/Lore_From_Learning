@@ -1,0 +1,39 @@
+IF
+  GlobalGT("cd_lore_prof_total","GLOBAL",%martial_min%)
+  GlobalLT("cd_lore_prof_total","GLOBAL",100)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_prof_total","GLOBAL",100)
+    ApplySpellRES("cdlore1",Myself)
+    DisplayString(Myself,@2002)
+END 
+
+IF
+  Global("cd_lore_grandmastery","GLOBAL",0)
+  OR(20)
+    Proficiency(Player1,89,5)  // PROFICIENCYBASTARDSWORD
+    Proficiency(Player1,90,5)  // PROFICIENCYLONGSWORD
+    Proficiency(Player1,91,5)  // PROFICIENCYSHORTSWORD
+    Proficiency(Player1,92,5)  // PROFICIENCYAXE
+    Proficiency(Player1,93,5)  // PROFICIENCYTWOHANDEDSWORD
+    Proficiency(Player1,94,5)  // PROFICIENCYKATANA
+    Proficiency(Player1,95,5)  // PROFICIENCYSCIMITARWAKISASHININJATO
+    Proficiency(Player1,96,5)  // PROFICIENCYDAGGER
+    Proficiency(Player1,97,5)  // PROFICIENCYWARHAMMER
+    Proficiency(Player1,98,5)  // PROFICIENCYSPEAR
+    Proficiency(Player1,99,5)  // PROFICIENCYHALBERD
+    Proficiency(Player1,100,5) // PROFICIENCYFLAILMORNINGSTAR
+    Proficiency(Player1,101,5) // PROFICIENCYMACE
+    Proficiency(Player1,102,5) // PROFICIENCYQUARTERSTAFF
+    Proficiency(Player1,103,5) // PROFICIENCYCROSSBOW
+    Proficiency(Player1,104,5) // PROFICIENCYLONGBOW
+    Proficiency(Player1,105,5) // PROFICIENCYSHORTBOW
+    Proficiency(Player1,106,5) // PROFICIENCYDART
+    Proficiency(Player1,107,5) // PROFICIENCYSLING
+    Proficiency(Player1,115,5) // proficiencyclub on EE, EXTRAPROFICIENCY1 on oBG2
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_grandmastery","GLOBAL",1)
+    ApplySpellRES("cdlore1",Myself)
+    DisplayString(Myself,@2001)
+END    

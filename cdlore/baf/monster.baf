@@ -1,0 +1,9 @@
+IF
+  Global("cd_lore_monster_%index%","GLOBAL",0)
+  See([0.0.%index%]) 
+  StateCheck(LastSeenBy(Myself),STATE_REALLY_DEAD)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_monster_%index%","GLOBAL",1)
+    IncrementGlobal("cd_lore_monster_total","GLOBAL",1)
+END 

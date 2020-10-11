@@ -1,0 +1,9 @@
+IF
+  Global("cd_lore_weapon_%prof%","GLOBAL",0)
+  ProficiencyGT(Player1,%prof%,0)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_weapon_%prof%","GLOBAL",1)
+    IncrementGlobal("cd_lore_prof_total","GLOBAL",1)
+    Continue()
+END    

@@ -1,0 +1,9 @@
+IF
+  GlobalGT("cd_lore_books","GLOBAL",%books_to_read_min%)
+  GlobalLT("cd_lore_books_total_bonuses","GLOBAL",%max_lore_from_books_bcs%)
+THEN
+  RESPONSE #100
+    IncrementGlobal("cd_lore_books","GLOBAL",-%books_to_read%)
+    IncrementGlobal("cd_lore_books_total_bonuses","GLOBAL",1)
+    ApplySpellRES("cdlore1",Player1)
+END    

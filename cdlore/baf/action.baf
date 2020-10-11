@@ -1,0 +1,7 @@
+IF
+  GlobalGT("cd_lore_actions","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_actions","GLOBAL",0)
+    Continue()
+END   

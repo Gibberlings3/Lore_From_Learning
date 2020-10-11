@@ -1,0 +1,47 @@
+/////                                                  \\\\\
+///// universal settings                               \\\\\
+/////                                                  \\\\\
+
+// number of 'actions' you can take per night, e.g. reading one book is an "action"
+// please note: some things take up a full night *by design* and will not be affected by this setting
+OUTER_SET actions_per_rest = 3
+
+
+/////                                                  \\\\\
+///// book component settings                          \\\\\
+/////                                                  \\\\\
+
+OUTER_SET books_to_read       =  5 // number of books to read until you gain a point of lore
+OUTER_SET max_lore_from_books = 10 // the amount of lore, total, that you can earn from books over the course of the game
+
+
+/////                                                  \\\\\
+///// martial component settings                       \\\\\
+/////                                                  \\\\\
+
+OUTER_SET number_weapon_profs = 6 // number of different weapons you need a star in to gain a point of lore
+OUTER_SET count_weapon_styles = 0 // set this to 1 if you want the weapon styles to count for the different weapons learned, otherwise 0
+
+
+/////                                                  \\\\\
+///// party component settings                         \\\\\
+/////                                                  \\\\\
+
+OUTER_SET other_races  =  3 // number of races (NOT counting PC) that must be in the party to qualify for bonus
+OUTER_SET race_bonus_1 =  3 // number of rests until you get the first bonus
+OUTER_SET race_bonus_2 = 10 // number of rests until you get the second bonus
+OUTER_SET race_bonus_3 = 30 // number of rests until you get the final bonus
+
+OUTER_SET other_classes =  4 // number of classes (NOT counting PC) that must be in the party to qualify for bonus
+OUTER_SET class_bonus_1 =  5 // number of rests until you get the first bonus
+OUTER_SET class_bonus_2 = 15 // number of rests until you get the second bonus
+OUTER_SET class_bonus_3 = 45 // number of rests until you get the final bonus
+
+
+/////                                                  \\\\\
+///// monster component settings                       \\\\\
+/////                                                  \\\\\
+
+OUTER_SET race_bonus_1 = 10 // number of monster races that need to be killed to get the first bonus
+OUTER_SET race_bonus_2 = 30 // number of monster races that need to be killed to get the second bonus
+OUTER_SET race_bonus_3 = 70 // number of monster races that need to be killed to get the final bonus

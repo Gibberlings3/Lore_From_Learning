@@ -1,0 +1,15 @@
+IF
+  Global("cd_lore_class_%index%","GLOBAL",0)
+  !Class(Player1,%index%)
+  OR(5)    
+    Class(Player2,%index%)
+    Class(Player3,%index%)
+    Class(Player4,%index%)
+    Class(Player5,%index%)
+    Class(Player6,%index%)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_class_%index%","GLOBAL",1)
+    IncrementGlobal("cd_lore_class_total","GLOBAL",1)
+    Continue()
+END 

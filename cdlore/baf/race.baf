@@ -1,0 +1,15 @@
+IF
+  Global("cd_lore_race_%index%","GLOBAL",0)
+  !Race(Player1,%index%)
+  OR(5)
+    Race(Player2,%index%)
+    Race(Player3,%index%)
+    Race(Player4,%index%)
+    Race(Player5,%index%)
+    Race(Player6,%index%)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_race_%index%","GLOBAL",1)
+    IncrementGlobal("cd_lore_race_total","GLOBAL",1)
+    Continue()
+END 

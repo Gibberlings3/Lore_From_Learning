@@ -1,0 +1,47 @@
+IF
+  GlobalGT("cd_lore_race_total","GLOBAL",%other_races%)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_race_total","GLOBAL",0)
+    IncrementGlobal("cd_lore_race_time","GLOBAL",1)
+    Continue()
+END
+
+IF
+  !Global("cd_lore_race_total","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_race_total","GLOBAL",0)
+    Continue()
+END
+
+IF 
+  GlobalGT("cd_lore_race_time","GLOBAL",%race_bonus_1%)  
+  Global("cd_lore_race_bonus","GLOBAL",0) 
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_race_bonus","GLOBAL",1) 
+    ApplySpellRES("cdlore1",Myself)
+    DisplayString(Myself,@3001)
+END    
+
+IF 
+  GlobalGT("cd_lore_race_time","GLOBAL",%race_bonus_2%)  
+  Global("cd_lore_race_bonus","GLOBAL",1) 
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_race_bonus","GLOBAL",2) 
+    ApplySpellRES("cdlore1",Myself)
+    DisplayString(Myself,@3002)
+END    
+
+IF 
+  GlobalGT("cd_lore_race_time","GLOBAL",%race_bonus_3%)  
+  Global("cd_lore_race_bonus","GLOBAL",2) 
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_race_bonus","GLOBAL",3) 
+    ApplySpellRES("cdlore1",Myself)
+    DisplayString(Myself,@3003)
+END    
+      
