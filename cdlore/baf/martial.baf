@@ -1,6 +1,7 @@
 IF
   Global("cd_lore_weapon_%prof%","GLOBAL",0)
-  ProficiencyGT(Player1,%prof%,0)
+  CheckStatGT(Player1,0,%prof%)
+//  ProficiencyGT(Player1,%prof%,0)
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_weapon_%prof%","GLOBAL",1)

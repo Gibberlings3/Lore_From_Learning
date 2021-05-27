@@ -40,6 +40,7 @@ THEN
     SetGlobal("cd_lore_class_bonus","GLOBAL",1) 
     ApplySpellRES("cdlore1",Player1)
     DisplayString(Myself,@3004)
+    RestParty()
 END    
 
 IF 
@@ -50,6 +51,7 @@ THEN
     SetGlobal("cd_lore_class_bonus","GLOBAL",2) 
     ApplySpellRES("cdlore1",Player1)
     DisplayString(Myself,@3005)
+    RestParty()
 END    
 
 IF 
@@ -60,6 +62,7 @@ THEN
     SetGlobal("cd_lore_class_bonus","GLOBAL",3) 
     ApplySpellRES("cdlore1",Player1)
     DisplayString(Myself,@3006)
+    RestParty()
 END    
 
 IF 
@@ -70,6 +73,7 @@ THEN
     SetGlobal("cd_lore_race_bonus","GLOBAL",1) 
     ApplySpellRES("cdlore1",Player1)
     DisplayString(Myself,@3001)
+    RestParty()
 END    
 
 IF 
@@ -80,6 +84,7 @@ THEN
     SetGlobal("cd_lore_race_bonus","GLOBAL",2) 
     ApplySpellRES("cdlore1",Player1)
     DisplayString(Myself,@3002)
+    RestParty()
 END    
 
 IF 
@@ -90,6 +95,7 @@ THEN
     SetGlobal("cd_lore_race_bonus","GLOBAL",3) 
     ApplySpellRES("cdlore1",Player1)
     DisplayString(Myself,@3003)
+    RestParty()
 END    
       
       

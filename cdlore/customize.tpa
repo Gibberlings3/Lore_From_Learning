@@ -42,6 +42,6 @@ OUTER_SET class_bonus_3 = 45 // number of rests until you get the final bonus
 ///// monster component settings                       \\\\\
 /////                                                  \\\\\
 
-OUTER_SET race_bonus_1 = 10 // number of monster races that need to be killed to get the first bonus
-OUTER_SET race_bonus_2 = 30 // number of monster races that need to be killed to get the second bonus
-OUTER_SET race_bonus_3 = 70 // number of monster races that need to be killed to get the final bonus
+OUTER_SET monster_bonus_1 = 10 // number of monster races that need to be killed to get the first bonus
+OUTER_SET monster_bonus_2 = 30 // number of monster races that need to be killed to get the second bonus
+OUTER_SET monster_bonus_3 = 70 // number of monster races that need to be killed to get the final bonus

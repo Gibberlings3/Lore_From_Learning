@@ -23,6 +23,7 @@ THEN
     SetGlobal("cd_lore_monster_bonus","GLOBAL",1) 
     ApplySpellRES("cdlore1",Myself)
     DisplayString(Myself,@4001)
+    RestParty()
 END    
 
 IF 
@@ -33,6 +34,7 @@ THEN
     SetGlobal("cd_lore_monster_bonus","GLOBAL",2) 
     ApplySpellRES("cdlore1",Myself)
     DisplayString(Myself,@4002)
+    RestParty()
 END    
 
 IF 
@@ -43,5 +45,6 @@ THEN
     SetGlobal("cd_lore_monster_bonus","GLOBAL",3) 
     ApplySpellRES("cdlore1",Myself)
     DisplayString(Myself,@4003)
+    RestParty()
 END    
       

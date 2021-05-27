@@ -1,7 +1,7 @@
 BACKUP ~cdlore/backup~ // location to store files for uninstall purposes
 SUPPORT ~https://www.gibberlings3.net/forums/forum/28-miscellaneous-released-mods/~
 
-VERSION ~v1~
+VERSION ~v2~
 
 README ~cdlore/languages/%LANGUAGE%/readme-cdlore.html~ ~cdlore/readme-cdlore.html~
 
@@ -131,7 +131,7 @@ BEGIN @4000 DESIGNATED 40 // weapon profs provide lore
 
 ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
 
-OUTER_FOR (index = 100 ; prof < 200 ; ++prof) BEGIN
+OUTER_FOR (index = 100 ; index < 200 ; ++index) BEGIN
  
   EXTEND_BOTTOM ~dplayer3.bcs~ ~cdlore/baf/monster.baf~ EVALUATE_BUFFER
 

@@ -23,6 +23,7 @@ THEN
     SetGlobal("cd_lore_race_bonus","GLOBAL",1) 
     ApplySpellRES("cdlore1",Myself)
     DisplayString(Myself,@3001)
+    RestParty()
 END    
 
 IF 
@@ -33,6 +34,7 @@ THEN
     SetGlobal("cd_lore_race_bonus","GLOBAL",2) 
     ApplySpellRES("cdlore1",Myself)
     DisplayString(Myself,@3002)
+    RestParty()
 END    
 
 IF 
@@ -43,5 +45,6 @@ THEN
     SetGlobal("cd_lore_race_bonus","GLOBAL",3) 
     ApplySpellRES("cdlore1",Myself)
     DisplayString(Myself,@3003)
+    RestParty()
 END    
       

@@ -6,34 +6,36 @@ THEN
     SetGlobal("cd_lore_prof_total","GLOBAL",100)
     ApplySpellRES("cdlore1",Myself)
     DisplayString(Myself,@2002)
+    RestParty()
 END 
 
 IF
   Global("cd_lore_grandmastery","GLOBAL",0)
   OR(20)
-    Proficiency(Player1,89,5)  // PROFICIENCYBASTARDSWORD
-    Proficiency(Player1,90,5)  // PROFICIENCYLONGSWORD
-    Proficiency(Player1,91,5)  // PROFICIENCYSHORTSWORD
-    Proficiency(Player1,92,5)  // PROFICIENCYAXE
-    Proficiency(Player1,93,5)  // PROFICIENCYTWOHANDEDSWORD
-    Proficiency(Player1,94,5)  // PROFICIENCYKATANA
-    Proficiency(Player1,95,5)  // PROFICIENCYSCIMITARWAKISASHININJATO
-    Proficiency(Player1,96,5)  // PROFICIENCYDAGGER
-    Proficiency(Player1,97,5)  // PROFICIENCYWARHAMMER
-    Proficiency(Player1,98,5)  // PROFICIENCYSPEAR
-    Proficiency(Player1,99,5)  // PROFICIENCYHALBERD
-    Proficiency(Player1,100,5) // PROFICIENCYFLAILMORNINGSTAR
-    Proficiency(Player1,101,5) // PROFICIENCYMACE
-    Proficiency(Player1,102,5) // PROFICIENCYQUARTERSTAFF
-    Proficiency(Player1,103,5) // PROFICIENCYCROSSBOW
-    Proficiency(Player1,104,5) // PROFICIENCYLONGBOW
-    Proficiency(Player1,105,5) // PROFICIENCYSHORTBOW
-    Proficiency(Player1,106,5) // PROFICIENCYDART
-    Proficiency(Player1,107,5) // PROFICIENCYSLING
-    Proficiency(Player1,115,5) // proficiencyclub on EE, EXTRAPROFICIENCY1 on oBG2
+    CheckStat(Player1,5,89)  // PROFICIENCYBASTARDSWORD
+    CheckStat(Player1,5,90)  // PROFICIENCYLONGSWORD
+    CheckStat(Player1,5,91)  // PROFICIENCYSHORTSWORD
+    CheckStat(Player1,5,92)  // PROFICIENCYAXE
+    CheckStat(Player1,5,93)  // PROFICIENCYTWOHANDEDSWORD
+    CheckStat(Player1,5,94)  // PROFICIENCYKATANA
+    CheckStat(Player1,5,95)  // PROFICIENCYSCIMITARWAKISASHININJATO
+    CheckStat(Player1,5,96)  // PROFICIENCYDAGGER
+    CheckStat(Player1,5,97)  // PROFICIENCYWARHAMMER
+    CheckStat(Player1,5,98)  // PROFICIENCYSPEAR
+    CheckStat(Player1,5,99)  // PROFICIENCYHALBERD
+    CheckStat(Player1,5,100) // PROFICIENCYFLAILMORNINGSTAR
+    CheckStat(Player1,5,101) // PROFICIENCYMACE
+    CheckStat(Player1,5,102) // PROFICIENCYQUARTERSTAFF
+    CheckStat(Player1,5,103) // PROFICIENCYCROSSBOW
+    CheckStat(Player1,5,104) // PROFICIENCYLONGBOW
+    CheckStat(Player1,5,105) // PROFICIENCYSHORTBOW
+    CheckStat(Player1,5,106) // PROFICIENCYDART
+    CheckStat(Player1,5,107) // PROFICIENCYSLING
+    CheckStat(Player1,5,115) // proficiencyclub on EE, EXTRAPROFICIENCY1 on oBG2
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_grandmastery","GLOBAL",1)
     ApplySpellRES("cdlore1",Myself)
     DisplayString(Myself,@2001)
+    RestParty()
 END    
