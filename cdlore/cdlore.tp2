@@ -1,7 +1,7 @@
 BACKUP ~cdlore/backup~ // location to store files for uninstall purposes
 SUPPORT ~https://www.gibberlings3.net/forums/forum/28-miscellaneous-released-mods/~
 
-VERSION ~Beta 1~
+VERSION ~v1~
 
 README ~cdlore/languages/%LANGUAGE%/readme-cdlore.html~ ~cdlore/readme-cdlore.html~
 
