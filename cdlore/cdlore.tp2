@@ -9,6 +9,10 @@ LANGUAGE ~English~ ~english~
   ~cdlore/languages/english/weidu.tra~
   ~cdlore/languages/english/game.tra~
 
+LANGUAGE ~Polski (Cahir)~ ~polish~ 
+  ~cdlore/languages/polish/weidu.tra~
+  ~cdlore/languages/polish/game.tra~
+
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////                                                  \\\\\
