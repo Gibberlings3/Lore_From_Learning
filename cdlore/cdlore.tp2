@@ -45,6 +45,7 @@ translators: delete this line and the line at the beginning to activate this com
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @1000 DESIGNATED 10 // books provide lore
+LABEL "cd_lore_from_learning_books"
 REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt ca iwd_in_bg2 bgee bg2ee eet~ @2
 
 ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
@@ -79,6 +80,7 @@ EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/book_bottom.baf~ EVALUATE_BUFFER
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @2000 DESIGNATED 20 // weapon profs provide lore
+LABEL "cd_lore_from_learning_martial"
 
 ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
 
@@ -106,6 +108,7 @@ EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/martial_bottom.baf~ EVALUATE_BUFFER
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @3000 DESIGNATED 30 // weapon profs provide lore
+LABEL "cd_lore_from_learning_party"
 
 ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
 
@@ -132,6 +135,7 @@ EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/party.baf~  EVALUATE_BUFFER
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @4000 DESIGNATED 40 // weapon profs provide lore
+LABEL "cd_lore_from_learning_monster"
 
 ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
 
