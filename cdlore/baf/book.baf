@@ -1,4 +1,5 @@
 IF
+  CheckStatGT(Player1,8,INT)
   PartyHasItem("%tutu_var%%cdbook_0%")
   Global("cd_lore_%cdbook_0%_check","GLOBAL",0)
   GlobalLT("CD_lore_actions","GLOBAL",%cd_action_min%)
