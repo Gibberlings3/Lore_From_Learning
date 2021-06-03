@@ -27,6 +27,23 @@ OUTER_SET monster_bonus_1 = 10 // number of monster races that need to be killed
 OUTER_SET monster_bonus_2 = 30 // number of monster races that need to be killed to get the second bonus
 OUTER_SET monster_bonus_3 = 60 // number of monster races that need to be killed to get the final bonus
 
+// some derived vars for the scripting
+OUTER_SET books_to_read_min = books_to_read - 1
+OUTER_SET max_lore_from_books_bcs = max_lore_from_books + 1
+OUTER_SET martial_min = number_weapon_profs - 1
+// apparently R_B_B doesn't resolve @, so we convert these to vars
+OUTER_SET cdlore_string_2001 = RESOLVE_STR_REF (@2001)
+OUTER_SET cdlore_string_2002 = RESOLVE_STR_REF (@2002)
+OUTER_SET cdlore_string_3001 = RESOLVE_STR_REF (@3001)
+OUTER_SET cdlore_string_3002 = RESOLVE_STR_REF (@3002)
+OUTER_SET cdlore_string_3003 = RESOLVE_STR_REF (@3003)
+OUTER_SET cdlore_string_3004 = RESOLVE_STR_REF (@3004)
+OUTER_SET cdlore_string_3005 = RESOLVE_STR_REF (@3005)
+OUTER_SET cdlore_string_3006 = RESOLVE_STR_REF (@3006)
+OUTER_SET cdlore_string_4001 = RESOLVE_STR_REF (@4001)
+OUTER_SET cdlore_string_4002 = RESOLVE_STR_REF (@4002)
+OUTER_SET cdlore_string_4003 = RESOLVE_STR_REF (@4003)
+
 INCLUDE ~cdlore/customize.tpa~
 
 OUTER_SPRINT "tutu_var" ""  
@@ -34,3 +51,48 @@ ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN OUTER_SPRINT "tutu_var" "_" END
   
 COPY ~cdlore/spl/cdlore1.spl~ ~override~
   SAY 0x9e @100 // "You have earned one point of lore."
+
+// OK, so why do we do this goofy wrapup sequence? Given the install order the actual lore point from
+// books could preempt the collection of points for the race/class counters. So anything that does
+// not end with Continue() is shifted back to the bottom with every component. A little more coding
+// but makes it seamless for the players and avoids a standalone wrapup component. 
+DEFINE_ACTION_FUNCTION cd_lore_wrapup  
+  INT_VAR 
+    cd_wrapup_books = 0
+    cd_wrapup_martial = 0
+    cd_wrapup_party = 0
+    cd_wrapup_monster = 0
+BEGIN   
+
+  // first delete the old end blocks
+  COPY_EXISTING ~player1d.bcs~ ~override~
+    PATCH_IF MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~10~ BEGIN
+      REPLACE_BCS_BLOCK EVALUATE_BUFFER ~cdlore/baf/book_bottom.baf~    ~cdlore/baf/blank.baf~
+    END  
+    PATCH_IF MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~20~ BEGIN
+      REPLACE_BCS_BLOCK EVALUATE_BUFFER ~cdlore/baf/martial_bottom.baf~ ~cdlore/baf/blank.baf~
+    END  
+    PATCH_IF MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~30~ BEGIN
+      REPLACE_BCS_BLOCK EVALUATE_BUFFER ~cdlore/baf/party_bottom.baf~   ~cdlore/baf/blank.baf~
+    END  
+    PATCH_IF MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~40~ BEGIN
+      REPLACE_BCS_BLOCK EVALUATE_BUFFER ~cdlore/baf/monster_bottom.baf~ ~cdlore/baf/blank.baf~
+    END  
+    // now add back as needed in preferred order
+    DECOMPILE_AND_PATCH BEGIN
+      PATCH_IF ((MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~30~) OR (cd_wrapup_party = 1)) BEGIN
+        APPEND_FILE ~cdlore/baf/party_bottom.baf~ EVALUATE_BUFFER
+      END  
+      PATCH_IF ((MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~20~) OR (cd_wrapup_martial = 1)) BEGIN
+        APPEND_FILE ~cdlore/baf/martial_bottom.baf~ EVALUATE_BUFFER
+      END  
+      PATCH_IF ((MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~40~) OR (cd_wrapup_monster = 1)) BEGIN
+        APPEND_FILE ~cdlore/baf/monster_bottom.baf~ EVALUATE_BUFFER
+      END  
+      PATCH_IF ((MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~10~) OR (cd_wrapup_books = 1)) BEGIN
+        APPEND_FILE ~cdlore/baf/book_bottom.baf~ EVALUATE_BUFFER
+      END  
+    END  
+    BUT_ONLY
+
+END

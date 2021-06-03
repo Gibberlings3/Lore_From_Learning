@@ -5,7 +5,7 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_prof_total","GLOBAL",100)
     ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,@2002)
+    DisplayString(Myself,%cdlore_string_2002%)
     RestParty()
 END 
 
@@ -36,6 +36,6 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_grandmastery","GLOBAL",1)
     ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,@2001)
+    DisplayString(Myself,%cdlore_string_2001%)
     RestParty()
 END    

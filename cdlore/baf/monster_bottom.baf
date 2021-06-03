@@ -1,20 +1,3 @@
-IF
-  GlobalGT("cd_lore_monster_total","GLOBAL",9)
-THEN
-  RESPONSE #100
-    SetGlobal("cd_lore_race_total","GLOBAL",0)
-    IncrementGlobal("cd_lore_race_time","GLOBAL",1)
-    Continue()
-END
-
-IF
-  !Global("cd_lore_race_total","GLOBAL",0)
-THEN
-  RESPONSE #100
-    SetGlobal("cd_lore_race_total","GLOBAL",0)
-    Continue()
-END
-
 IF 
   GlobalGT("cd_lore_monster_total","GLOBAL",%monster_bonus_1%)
   Global("cd_lore_monster_bonus","GLOBAL",0) 
@@ -22,7 +5,7 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_monster_bonus","GLOBAL",1) 
     ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,@4001)
+    DisplayString(Myself,%cdlore_string_4001%)
     RestParty()
 END    
 
@@ -33,7 +16,7 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_monster_bonus","GLOBAL",2) 
     ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,@4002)
+    DisplayString(Myself,%cdlore_string_4002%)
     RestParty()
 END    
 
@@ -44,7 +27,7 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_monster_bonus","GLOBAL",3) 
     ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,@4003)
+    DisplayString(Myself,%cdlore_string_4003%)
     RestParty()
 END    
       

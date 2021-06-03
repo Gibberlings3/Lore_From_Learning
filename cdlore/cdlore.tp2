@@ -65,11 +65,8 @@ ACTION_PHP_EACH cd_book_strings AS cdbook => string BEGIN
 
 END  
 
-// final wrap up that actually tallies read books and distributes lore as appropriate
-// No Continue() is deliberate, as we only want one point of lore gained per evening
-OUTER_SET books_to_read_min = books_to_read - 1
-OUTER_SET max_lore_from_books_bcs = max_lore_from_books + 1
-EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/book_bottom.baf~ EVALUATE_BUFFER
+LAF cd_lore_wrapup INT_VAR cd_wrapup_books = 1 END
+
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -93,11 +90,7 @@ OUTER_FOR (prof = 89 ; prof < 116 ; ++prof) BEGIN
 
 END   
 
-// final wrap up that tallies total weapons profs and distributes lore when conditions met
-// also provides point if grandmastery achieved
-// No Continue() is deliberate, as we only want one point of lore gained per evening
-OUTER_SET martial_min = number_weapon_profs - 1
-EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/martial_bottom.baf~ EVALUATE_BUFFER
+LAF cd_lore_wrapup INT_VAR cd_wrapup_martial = 1 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -125,6 +118,7 @@ ACTION_FOR_EACH index IN 19 20 21 202 203 204 205 206 207 208 209 BEGIN // sorce
 END     
 
 EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/party.baf~  EVALUATE_BUFFER
+LAF cd_lore_wrapup INT_VAR cd_wrapup_party = 1 END
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -145,4 +139,4 @@ OUTER_FOR (index = 100 ; index < 200 ; ++index) BEGIN
 
 END 
 
-EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/monster_bottom.baf~ EVALUATE_BUFFER
+LAF cd_lore_wrapup INT_VAR cd_wrapup_monster = 1 END
