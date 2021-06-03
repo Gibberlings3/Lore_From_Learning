@@ -1,0 +1,13 @@
+// these are strings used ONLY by WeiDU toinstall the mod and not used in-game. 
+
+   @1 = ~Do poprawnego dzialania modyfikacji niezbedne jest uprzednie zainstalowanie programu DLC Merger. W celu uzyskania szczegolowych informacji przeczytaj plik Readme lub kliknij na link do pobrania DLC Merger.~
+   @2 = ~Wiedza z Nauki nie dziala obecnie dla tej gry. W celu uzyskania dodatkowych informacji sprawdz plik Readme lub watek na forum gry.~
+   @3 = ~Uwaga: Wsparcie dla tej gry jest obecnie na wstepnym etapie. Wszelkie bledy nalezy zglaszac w odpowiednim watku na forum.~
+   
+@1000 = ~Ksiazki zapewniaja premie do Wiedzy~
+
+@2000 = ~Bieglosc we wladaniu bronia zapewnia premie do Wiedzy~
+
+@3000 = ~Czlonkowie druzyny zapewniaja premie do Wiedzy~
+
+@4000 = ~Pokonywanie potworow zapewnia premie do Wiedzy~
