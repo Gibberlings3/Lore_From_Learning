@@ -1,0 +1,13 @@
+// these are strings used ONLY by WeiDU toinstall the mod and not used in-game. 
+
+   @1 = ~DLC Merger is required before mods can be installed on this game. Check the readme for more information and a link to download DLC Merger.~
+   @2 = ~Lore From Learning does not currently work for this game. Check the readme or forum for details.~
+   @3 = ~Warning: Support for this game is currently tentative. Please report any bugs to the forum.~
+   
+@1000 = ~Books Provide Lore Bonuses~
+
+@2000 = ~Weapon Knowledge Provides Lore Bonuses~
+
+@3000 = ~Party Members Provide Lore Bonuses~
+
+@4000 = ~Defeating Monsters Provides Lore Bonuses~
