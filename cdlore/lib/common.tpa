@@ -2,12 +2,23 @@
 
 ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) THEN BEGIN FAIL @1 END // Modmerge check
 
-ACTION_IF GAME_IS ~iwd_in_bg2~ THEN BEGIN WARN @3 END
+ACTION_IF GAME_IS ~iwd_in_bg2~ THEN BEGIN WARN @3 END 
 
-// convert strings to UTF-8 for BGEE/BG2EE
-ACTION_DEFINE_ARRAY cdreload BEGIN game END
-ACTION_DEFINE_ARRAY cdnoconvert BEGIN weidu END // List of tra files that contain ONLY strings for the WeiDU installer and NOT game content
-LAF HANDLE_CHARSETS INT_VAR infer_charsets = 1 STR_VAR tra_path = ~cdlore/languages~ noconvert_array = cdnoconvert reload_array = cdreload END
+ACTION_IF GAME_IS ~bgee bg2ee iwdee eet pstee~ BEGIN // ee games
+
+  OUTER_SET enhanced_edition = 1 // re-using David's variables
+  OUTER_SPRINT ~tra_location~ ~weidu_external/cdlore/languages~
+
+  // convert strings to UTF-8 for BGEE/BG2EE
+  ACTION_DEFINE_ARRAY cdreload BEGIN game END
+  ACTION_DEFINE_ARRAY cdnoconvert BEGIN weidu END // List of tra files that contain ONLY strings for the WeiDU installer and NOT game content
+  LAF HANDLE_CHARSETS INT_VAR infer_charsets = 1 STR_VAR tra_path = ~cdlore/languages~ out_path = ~weidu_external/cdlore/languages~ noconvert_array = cdnoconvert reload_array = cdreload END
+  
+END ELSE BEGIN
+
+  OUTER_SPRINT ~tra_location~ ~cdlore/languages~
+  
+END
 
 // these should get set by customize.tpa, but we include defaults in case they delete important bits from that 
 OUTER_SET actions_per_rest = 3
@@ -27,6 +38,8 @@ OUTER_SET monster_bonus_1 = 10 // number of monster races that need to be killed
 OUTER_SET monster_bonus_2 = 30 // number of monster races that need to be killed to get the second bonus
 OUTER_SET monster_bonus_3 = 60 // number of monster races that need to be killed to get the final bonus
 
+INCLUDE ~cdlore/customize.tpa~
+
 // some derived vars for the scripting
 OUTER_SET books_to_read_min = books_to_read - 1
 OUTER_SET max_lore_from_books_bcs = max_lore_from_books + 1
@@ -43,8 +56,6 @@ OUTER_SET cdlore_string_3006 = RESOLVE_STR_REF (@3006)
 OUTER_SET cdlore_string_4001 = RESOLVE_STR_REF (@4001)
 OUTER_SET cdlore_string_4002 = RESOLVE_STR_REF (@4002)
 OUTER_SET cdlore_string_4003 = RESOLVE_STR_REF (@4003)
-
-INCLUDE ~cdlore/customize.tpa~
 
 OUTER_SPRINT "tutu_var" ""  
 ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN OUTER_SPRINT "tutu_var" "_" END
