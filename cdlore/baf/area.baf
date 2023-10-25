@@ -1,0 +1,7 @@
+IF
+  Global("cd_lore_area_here","MYAREA",0)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_area_here","MYAREA",1)
+    IncrementGlobal("cd_lore_area_total","GLOBAL",%value%)
+END

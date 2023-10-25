@@ -56,6 +56,9 @@ OUTER_SET cdlore_string_3006 = RESOLVE_STR_REF (@3006)
 OUTER_SET cdlore_string_4001 = RESOLVE_STR_REF (@4001)
 OUTER_SET cdlore_string_4002 = RESOLVE_STR_REF (@4002)
 OUTER_SET cdlore_string_4003 = RESOLVE_STR_REF (@4003)
+OUTER_SET cdlore_string_5001 = RESOLVE_STR_REF (@5001)
+OUTER_SET cdlore_string_5002 = RESOLVE_STR_REF (@5002)
+OUTER_SET cdlore_string_5003 = RESOLVE_STR_REF (@5003)
 
 OUTER_SPRINT "tutu_var" ""  
 ACTION_IF GAME_IS ~tutu tutu_totsc~ THEN BEGIN OUTER_SPRINT "tutu_var" "_" END
@@ -89,6 +92,9 @@ BEGIN
     PATCH_IF MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~40~ BEGIN
       REPLACE_BCS_BLOCK EVALUATE_BUFFER ~cdlore/baf/monster_bottom.baf~ ~cdlore/baf/blank.baf~
     END  
+    PATCH_IF MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~50~ BEGIN
+      REPLACE_BCS_BLOCK EVALUATE_BUFFER ~cdlore/baf/area_bottom.baf~    ~cdlore/baf/blank.baf~
+    END  
     // now add back as needed in preferred order
     DECOMPILE_AND_PATCH BEGIN
       PATCH_IF ((MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~30~) OR (cd_wrapup_party = 1)) BEGIN
@@ -99,6 +105,9 @@ BEGIN
       END  
       PATCH_IF ((MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~40~) OR (cd_wrapup_monster = 1)) BEGIN
         APPEND_FILE ~cdlore/baf/monster_bottom.baf~ EVALUATE_BUFFER
+      END  
+      PATCH_IF ((MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~50~) OR (cd_wrapup_area = 1)) BEGIN
+        APPEND_FILE ~cdlore/baf/area_bottom.baf~ EVALUATE_BUFFER
       END  
       PATCH_IF ((MOD_IS_INSTALLED ~cdlore/cdlore.tp2~ ~10~) OR (cd_wrapup_books = 1)) BEGIN
         APPEND_FILE ~cdlore/baf/book_bottom.baf~ EVALUATE_BUFFER

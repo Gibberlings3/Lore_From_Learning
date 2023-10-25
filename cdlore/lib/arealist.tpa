@@ -1,0 +1,241 @@
+/*
+ some general guidelines:
+ 2 points: taverns, inns, temples
+ 2 points: locations associated with one of the notable groups of the region, e.g. Iron Throne, Harpers, Flaming Fist
+ 3 points: areas mentioned in volo's guide as noteworthy e.g. Elfsong Tavern
+ 3 points: notable/famous dungeons, e.g. BG Undercity or Durlag's
+ 4 points: areas relating specifically to your heritage, such as Bhaal temples or Boarskeyr
+ 5 points: extraplanar, other exotics
+ 
+ For 'ineresting' areas that have multiple subareas, e.g. a tavern with multiple floors, hand out a single
+ bonus for the whole area on the entrance subarea, *not* one per subarea. E.g. visiting the Elfsong gets you a 
+ single 3-point bonus, not 3 points per floor of the tavern
+ */
+
+ACTION_IF GAME_IS ~bgee eet tutu tutu_totsc bgt~ BEGIN // bg, sod areas
+
+  ACTION_IF GAME_IS ~tutu tutu_totsc~ BEGIN INCLUDE ~cdlore/lib/g3_tutu_cpmvars.tpa~    END ELSE       // tutu
+  ACTION_IF GAME_IS ~bgt~             BEGIN INCLUDE ~cdlore/lib/g3_bgt_cpmvars.tpa~     END ELSE       // bgt
+  ACTION_IF GAME_IS ~eet~             BEGIN INCLUDE ~eet/other/cpmvars/eet_cpmvars.tpa~ END ELSE BEGIN // eet
+                                            INCLUDE ~cdlore/lib/g3_bgee_cpmvars.tpa~    END            // use this for bgee AND obg
+                              
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_areas BEGIN   
+
+    // mainline bg areas
+    ~%NBaldursGate_TempleofHelm%~          => 2 // AR0002 in oBG/BGEE
+    ~%NEBaldursGate_SplurgingSturgeon_L1%~ => 2 // AR0103 in oBG/BGEE
+    ~%SEBaldursGate_Blade&Stars_L1%~       => 2 // AR0105 in oBG/BGEE
+    ~%NBaldursGate_DucalPalace_L1%~        => 2 // AR0108 in oBG/BGEE
+    ~%BaldursGate_Undercellars%~           => 2 // AR0112 in oBG/BGEE
+    ~%NEBaldursGate_BlushingMermaid_L1%~   => 2 // AR0114 in oBG/BGEE
+    ~%NWBaldursGate_Helm&Cloak_L1%~        => 2 // AR0116 in oBG/BGEE
+    ~%NBaldursGate_ThreeOldKegs_L1%~       => 2 // AR0119 in oBG/BGEE
+    ~%Undercity%~                          => 3 // AR0123 in oBG/BGEE
+    ~%Undercity_TempleofBhaal%~            => 4 // AR0125 in oBG/BGEE
+    ~%WBaldursGate_HallofWonders%~         => 2 // AR0130 in oBG/BGEE
+    ~%WBaldursGate_HighHouseofWonders%~    => 2 // AR0131 in oBG/BGEE
+    ~%WBaldursGate_LadysHouse%~            => 2 // AR0132 in oBG/BGEE
+    ~%BaldursGate_DocksLowLantern_D1%~     => 2 // AR0133 in oBG/BGEE
+    ~%NEBaldursGate_IlmatersShrine%~       => 2 // AR0149 in oBG/BGEE
+    ~%EBaldursGate_KeexieTavern_L1%~       => 2 // AR0154 in oBG/BGEE
+    ~%NWBaldursGate_Tavern_L1%~            => 2 // AR0165 in oBG/BGEE
+    ~%SWBaldursGate_FlamingFistHQ_L1%~     => 2 // AR0607 in oBG/BGEE
+    ~%BaldursGateDocks_WaterQueensHouse%~  => 2 // AR0609 in oBG/BGEE
+    ~%BaldursGateDocks_IronThrone_L1%~     => 2 // AR0616 in oBG/BGEE
+    ~%EBaldursGate_SorcerousSundries_L1%~  => 2 // AR0703 in oBG/BGEE
+    ~%EBaldursGate_ElfsongTavern_L1%~      => 3 // AR0705 in oBG/BGEE
+    ~%CentralBaldursGate_DrakonTavern%~    => 2 // AR0720 in oBG/BGEE
+    ~%CentralBaldursGate_GamblingTent1%~   => 2 // AR0724 in oBG/BGEE
+    ~%SWBaldursGate_Tavern_L1%~            => 2 // AR1109 in oBG/BGEE
+    ~%SWBaldursGate_YeOldeInn_L1%~         => 2 // AR1113 in oBG/BGEE
+    ~%BaldursGateDocks_JopalinsTavern%~    => 2 // AR1215 in oBG/BGEE
+    ~%SEBaldursGate_Inn_L1%~               => 2 // AR1306 in oBG/BGEE
+    ~%CloakwoodDruids_Treehouse_L1%~       => 2 // AR1601 in oBG/BGEE
+    ~%CloakwoodMines_L1%~                  => 2 // AR1801 in oBG/BGEE
+    ~%BanditCamp%~                         => 2 // AR1900 in oBG/BGEE
+    ~%FriendlyArmInn%~                     => 3 // AR2300 in oBG/BGEE
+    ~%Candlekeep%~                         => 3 // AR2600 in oBG/BGEE
+    ~%Candlekeep_Catacombs_L1Antechamber%~ => 2 // AR2613 in oBG/BGEE
+    ~%HighHedge_ThalanthyrsAbode%~         => 2 // AR3202 in oBG/BGEE
+    ~%Beregost_ThunderhammerSmithy%~       => 2 // AR3301 in oBG/BGEE
+    ~%Beregost_JovialJuggler_L1%~          => 2 // AR3304 in oBG/BGEE
+    ~%Beregost_BurningWizard_L1%~          => 2 // AR3307 in oBG/BGEE
+    ~%Beregost_FeldepostsInn_L1%~          => 2 // AR3351 in oBG/BGEE
+    ~%Beregost_RedSheaf_L1%~               => 2 // AR3357 in oBG/BGEE
+    ~%Temple_SongoftheMorning%~            => 2 // AR3402 in oBG/BGEE
+    ~%MutaminsGarden%~                     => 2 // AR3500 in oBG/BGEE
+    ~%Lighthouse_BlackAlaricsCave%~        => 2 // AR3601 in oBG/BGEE
+    ~%Ulcaster%~                           => 2 // AR3900 in oBG/BGEE
+    ~%UlcasterRuins%~                      => 3 // AR3901 in oBG/BGEE
+    ~%Gullykin_Winery_L1%~                 => 2 // AR4003 in oBG/BGEE
+    ~%ArchaeologicalSite_Tomb%~            => 2 // AR4101 in oBG/BGEE
+    ~%FirewineBridge%~                     => 3 // AR4500 in oBG/BGEE
+    ~%XvartVillage%~                       => 2 // AR4700 in oBG/BGEE
+    ~%Nashkel_Inn%~                        => 2 // AR4801 in oBG/BGEE
+    ~%Nashkel_TempleofHelm%~               => 2 // AR4802 in oBG/BGEE
+    ~%Nashkel_BelchingDragonTavern%~       => 2 // AR4809 in oBG/BGEE
+    ~%NashkelCarnival_GamblingTent%~       => 2 // AR4904 in oBG/BGEE
+    ~%GnollStronghold%~                    => 2 // AR5100 in oBG/BGEE
+    
+    // totsc
+    ~%DurlagsTower%~                       => 3 // AR0500 in oBG/BGEE
+    ~%DurlagsTower_Cellar%~                => 2 // AR0501 in oBG/BGEE
+    ~%DurlagsTower_Chessboard%~            => 2 // AR0506 in oBG/BGEE
+    ~%IsleofBalduranNShip_D4%~             => 2 // AR1504 in oBG/BGEE
+    ~%UlgothsBeard_Inn%~                   => 2 // AR1001 in oBG/BGEE
+    ~%IceIsland%~                          => 3 // AR1008 in oBG/BGEE
+    
+    // bgee
+    ~OH3000~                               => 2 // Rasaad - Dark Moon temple, exterior
+    
+    // sod (skipping many BG taverns and other areas since the PC already got bonuses in BG part of game)
+    ~BD1200~                               => 2 // Lich Outpost
+    ~BD2000~                               => 4 // Boareskyr Bridge & Bridgefort
+    ~BD4000~                               => 3 // Dragonspear Castle, Exterior
+    ~BD4400~                               => 5 // Avernus
+    ~BD5100~                               => 2 // Underground River
+    ~BD5300~                               => 2 // Kanaglym
+    ~BD7230~                               => 4 // Temple of Cyric
+    ~BD7400~                               => 2 // Bloodbark Grove
+    
+  END
+  
+END
+
+ACTION_IF GAME_IS ~bg2ee eet bgt~ BEGIN // bg2 areas
+                              
+  ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_areas BEGIN   
+  
+    // mainline bg2 areas
+    ~AR0021~ => 2 // Crooked Crane 1st Floor
+    ~AR0085~ => 2 // Tree of Life
+    ~AR0202~ => 2 // The Unseeing Eye Cult Hideout
+    ~AR0203~ => 2 // Temple of the Forgotten God -- Amaunator (Unseeing Eye Plot)
+    ~AR0305~ => 3 // Shadow Thieves Guild Entrance
+    ~AR0308~ => 2 // Harper's 1st Floor
+    ~AR0313~ => 2 // Sea Bounty Tavern 1st Floor
+    ~AR0319~ => 2 // Temple of Oghma
+    ~AR0406~ => 2 // Copper Coronet
+    ~AR0408~ => 2 // Temple of Ilmater
+    ~AR0410~ => 2 // Sphere: Navigator's room -- Lavok's Hideout
+    ~AR0414~ => 5 // Sphere: Demon Plane
+    ~AR0509~ => 2 // Five Flagons Inn 1st Floor
+    ~AR0512~ => 2 // Temple of Helm
+    ~AR0513~ => 2 // Calbor's Inn at Bridge District 1st Floor
+    ~AR0516~ => 5 // Planar Prison
+    ~AR0601~ => 2 // Air Plane in Irenicus's Dungeon
+    ~AR0702~ => 2 // Adventurer's Mart
+    ~AR0703~ => 2 // Temple of Ilmater
+    ~AR0704~ => 2 // Mithrest Inn
+    ~AR0709~ => 2 // Den of the Seven Vales 1st Floor
+    ~AR0711~ => 3 // Illithid Hideout in the Sewers (The Hidden Plot)
+    ~AR0713~ => 2 // Store or Inn at Promenade
+    ~AR0803~ => 2 // Bodhi's Lair (sided with Aran)
+    ~AR0804~ => 2 // Pai'Na's Hideout
+    ~AR0809~ => 2 // Bodhi's Lair (Abduction Plot, getting Imoen's soul)
+    ~AR0901~ => 2 // Temple of Helm
+    ~AR0902~ => 2 // Temple of Lathander
+    ~AR0903~ => 2 // Order of the Radiant Heart
+    ~AR0904~ => 2 // Temple of Talos
+    ~AR0906~ => 2 // Guarded Compound 1st Floor
+    ~AR1002~ => 2 // Councel Building
+    ~AR1008~ => 2 // Twisted Rune
+    ~AR1010~ => 2 // Temple of Waukeen
+    ~AR1105~ => 2 // Imnesvale Inn
+    ~AR1401~ => 2 // Shadow Temple
+    ~AR1500~ => 3 // Spellhold
+    ~AR1602~ => 2 // Brynnlaw's Inn
+    ~AR1604~ => 2 // Temple of Umberlee
+    ~AR2008~ => 2 // Temple of Waukeen
+    ~AR2010~ => 2 // Trademeet's Inn
+    ~AR2013~ => 2 // Trademeet Crypt
+    ~AR2014~ => 2 // Djinni's Tent
+    ~AR2100~ => 5 // Underdark
+    ~AR2200~ => 3 // Ust Natha
+    ~AR2201~ => 2 // Temple in Ust Natha
+    ~AR2202~ => 2 // Inn in Ust Natha 1st Floor
+    ~AR2300~ => 3 // Sahuagin City
+    ~AR2500~ => 2 // Elven Temple at Underdark Exit
+    ~AR2800~ => 3 // Suldanessellar
+    ~AR2803~ => 2 // Rillifane Temple
+    ~AR2806~ => 3 // Tree of Life
+    ~AR2900~ => 5 // The Abyss
+    
+    // tob
+    ~AR3000~ => 3 // Watcher's Keep
+    ~AR3001~ => 2 // Watcher's Keep -- Altar level
+    ~AR3003~ => 2 // Watcher's Keep -- Compass level
+    ~AR3016~ => 2 // Watcher's Keep -- Chromatic Demon; Elementalist Level
+    ~AR3017~ => 2 // Watcher's Keep -- Carston and the machine
+    ~AR3019~ => 2 // Watcher's Keep -- Helmite Level -- Last Seals
+    ~AR3020~ => 2 // Watcher's Keep -- Imprisoned One
+    ~AR4500~ => 3 // Pocket Plane
+    ~AR5003~ => 2 // Saradush Tavern (Tankard Tree)
+    ~AR5004~ => 2 // Temple of Waukeen
+    ~AR5011~ => 2 // Arcana Archives
+    ~AR5501~ => 2 // Amkethran Innea
+    ~AR6200~ => 5 // The Throne of Bhaal
+    
+    // bg2ee
+    ~OH4010~ => 2 // Rasaad - Tears of Selune battle encounter
+    ~OH4100~ => 2 // Rasaad - Dark Moon Heretic Temple
+    ~OH5000~ => 2 // Dorn - Radiant Heart (Wedding)
+    ~OH5100~ => 2 // Dorn - Resurrection Gorge
+    ~OH5300~ => 2 // Dorn - Helmite Camp
+    ~OH6000~ => 2 // Neera - The Wild Forest
+    ~OH6300~ => 2 // Neera - Red Wizard Enclave
+    ~OH7000~ => 2 // Hexxat - Top Left Quarter (Dragomir)
+    
+    // bg2ee tob
+    ~OH4230~ => 5 // Rasaad - Plane of Shadow
+    ~OH5500~ => 5 // Dorn - Lunia
+    
+  END   
+    
+END    
+
+ACTION_IF GAME_IS ~iwdee iwd-in-bg2~ BEGIN // iwd areas
+ 
+    // mainline areas
+    ~AR1001~ => 2 // Easthaven (prologue) - Temple of Tempus
+    ~AR1006~ => 2 // Easthaven (prologue) - Grisella's Winter's Cradle Tavern - main floor
+    ~AR1008~ => 2 // Easthaven (prologue) - Snowdrift Inn
+    ~AR1105~ => 2 // Easthaven (finale) - Temple of Tempus - Jerrod's Stone
+    ~AR2107~ => 2 // Kuldahar - Temple of Ilmater - House of the Bleeding Rose
+    ~AR2108~ => 2 // Kuldahar - Airship of Oswald Fiddlebender
+    ~AR2111~ => 2 // Kuldahar - Root Cellar Tavern
+    ~AR2114~ => 2 // Kuldahar - Evening Shade Inn - first floor
+    ~AR3301~ => 2 // Vale of Shadows - Temple of Myrkul
+    ~AR3503~ => 2 // Vale of Shadows - Tomb of Kresselack - third level
+    ~AR3600~ => 2 // Temple of the Forgotten God - exterior
+    ~AR4002~ => 2 // Dragon's Eye - second dungeon level (Talonites)
+    ~AR4004~ => 2 // Dragon's Eye - fourth dungeon level (Eldathyn)
+    ~AR5004~ => 3 // Severed Hand - main tower - fourth floor
+    ~AR5103~ => 3 // Severed Hand - Tower of Labelas - Larrel, astrolabe
+    ~AR5304~ => 2 // Severed Hand - Tower of Corellon - fourth floor, Valestis, arboretum
+    ~AR6004~ => 2 // Dorn's Deep - Temple of Moradin (cold forge)
+    ~AR6005~ => 2 // Dorn's Deep - Tiers of the Dead
+    ~AR6006~ => 2 // Dorn's Deep - Hall of Heroes
+    ~AR7001~ => 2 // Wyrm's Tooth Glacier - aquarium interior, ice salamander lair
+    ~AR8007~ => 2 // Lower Dorn's Deep - Order of the Kraken manor - second floor, Mekrath
+    ~AR8009~ => 2 // Lower Dorn's Deep - artisan's district
+    ~AR8011~ => 2 // Lower Dorn's Deep - forge, Ilmadia
+    
+    // Heart of Winter areas
+    ~AR9101~ => 2 // Lonelywood - Whistling Gallows - first floor
+    ~AR9103~ => 2 // Lonelywood - Temple of Waukeen
+    ~AR9201~ => 2 // Barbarian camp - Mead Hall
+    ~AR9400~ => 2 // Burial Isle - Wylfdene's barrow
+    ~AR9502~ => 2 // Gloomfrost interior - second level, Seer
+    ~AR9602~ => 2 // Sea of Moving Ice - Field of Bones
+    
+    // Trials of the Luremaster areas
+    ~AR9700~ => 5 // Anauroch Castle - outer courtyard (TotL start area)
+    ~AR9711~ => 2 // Anauroch Castle - inner courtyard
+    ~AR9713~ => 2 // Anauroch Castle - Ruined Temple of Helm
+    ~AR9714~ => 3 // Anauroch Castle - Watchknight Tomb
+    ~AR9801~ => 2 // Anauroch Castle - Jackal Clan caverns - level 2
+    
+  END
+
+END  

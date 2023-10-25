@@ -45,3 +45,12 @@ OUTER_SET class_bonus_3 = 45 // number of rests until you get the final bonus
 OUTER_SET monster_bonus_1 = 10 // number of monster races that need to be killed to get the first bonus
 OUTER_SET monster_bonus_2 = 30 // number of monster races that need to be killed to get the second bonus
 OUTER_SET monster_bonus_3 = 60 // number of monster races that need to be killed to get the final bonus
+
+
+/////                                                  \\\\\
+///// exploration component settings                   \\\\\
+/////                                                  \\\\\
+
+OUTER_SET area_bonus_1 = 150 // number of areas 'points' to earn for the first lore bonus
+OUTER_SET area_bonus_2 = 400 // number of areas 'points' to earn for the second lore bonus
+OUTER_SET area_bonus_3 = 800 // number of areas 'points' to earn for the final lore bonus

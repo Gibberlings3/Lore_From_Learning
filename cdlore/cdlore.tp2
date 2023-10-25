@@ -50,7 +50,7 @@ translators: delete this line and the line at the beginning to activate this com
 
 BEGIN @1000 DESIGNATED 10 // books provide lore
 LABEL "cd_lore_from_learning_books"
-REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt ca iwd_in_bg2 bgee bg2ee eet~ @2
+REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
 ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
 
@@ -82,6 +82,7 @@ LAF cd_lore_wrapup INT_VAR cd_wrapup_books = 1 END
 
 BEGIN @2000 DESIGNATED 20 // weapon profs provide lore
 LABEL "cd_lore_from_learning_martial"
+REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
 ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
 
@@ -106,6 +107,7 @@ LAF cd_lore_wrapup INT_VAR cd_wrapup_martial = 1 END
 
 BEGIN @3000 DESIGNATED 30 // weapon profs provide lore
 LABEL "cd_lore_from_learning_party"
+REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
 ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
 
@@ -134,6 +136,7 @@ LAF cd_lore_wrapup INT_VAR cd_wrapup_party = 1 END
 
 BEGIN @4000 DESIGNATED 40 // weapon profs provide lore
 LABEL "cd_lore_from_learning_monster"
+REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
 ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
 
@@ -144,3 +147,45 @@ OUTER_FOR (index = 100 ; index < 200 ; ++index) BEGIN
 END 
 
 LAF cd_lore_wrapup INT_VAR cd_wrapup_monster = 1 END
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// exploration lore                                 \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+
+BEGIN @5000 DESIGNATED 50 // areas provide lore
+LABEL "cd_lore_from_learning_area"
+REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
+
+ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
+
+// all master areas worth 1 point
+COPY_EXISTING ~mastarea.2da~ ~override~
+  REPLACE_EVALUATE ~^\([^ %TAB%]+\)\([ %TAB%]+value\)~ BEGIN
+    SPRINT area ~%MATCH1%~
+    TO_UPPER area
+    DEFINE_ASSOCIATIVE_ARRAY cd_areas BEGIN 
+      ~%area%~ => 1
+    END
+  END ~%MATCH1%%MATCH2%~
+  BUT_ONLY  
+
+INCLUDE ~cdlore/lib/booklist.tpa~ // override/append values to list built from mastarea
+
+ACTION_PHP_EACH cd_areas AS area => value BEGIN
+  
+  OUTER_SPRINT script ~~
+  COPY_EXISTING ~%area%.are~ ~override~
+    READ_ASCII 0x94 script
+    BUT_ONLY IF_EXISTS
+    
+  ACTION_IF ("%script%" STRING_COMPARE_CASE ~~) BEGIN // don't bother for null reference
+    EXTEND_BOTTOM ~%script%.bcs~ ~cdlore/baf/area.baf~ EVALUATE_BUFFER    
+  END  
+    
+END  
+
+LAF cd_lore_wrapup INT_VAR cd_wrapup_area = 1 END

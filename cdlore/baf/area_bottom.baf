@@ -1,0 +1,33 @@
+IF 
+  GlobalGT("cd_lore_area_total","GLOBAL",%area_bonus_1%)
+  Global("cd_lore_area_bonus","GLOBAL",0) 
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_area_bonus","GLOBAL",1) 
+    ApplySpellRES("cdlore1",Myself)
+    DisplayString(Myself,%cdlore_string_5001%)
+    RestParty()
+END    
+
+IF 
+  GlobalGT("cd_lore_area_total","GLOBAL",%area_bonus_2%)  
+  Global("cd_lore_area_bonus","GLOBAL",1) 
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_area_bonus","GLOBAL",2) 
+    ApplySpellRES("cdlore1",Myself)
+    DisplayString(Myself,%cdlore_string_5002%)
+    RestParty()
+END    
+
+IF 
+  GlobalGT("cd_lore_area_total","GLOBAL",%area_bonus_3%)  
+  Global("cd_lore_area_bonus","GLOBAL",2) 
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_area_bonus","GLOBAL",3) 
+    ApplySpellRES("cdlore1",Myself)
+    DisplayString(Myself,%cdlore_string_5003%)
+    RestParty()
+END    
+      

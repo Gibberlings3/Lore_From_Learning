@@ -99,3 +99,7 @@
 @4001 = ~Defeating many types of monsters has earned you a lore bonus.~
 @4002 = ~Defeating even more varieties of monsters has earned you a lore bonus.~
 @4003 = ~You have earned another lore bonus for defeating so many monsters.~
+
+@5001 = ~Your travel has earned you a lore bonus.~
+@5002 = ~Further travelling has earned you an additional lore bonus.~
+@5003 = ~Your extensive travels have earned you a lore bonus.~
