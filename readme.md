@@ -15,7 +15,7 @@ The Lore From Learning mod is a small WeiDU mod that adds lore bonuses to your m
 ## More Information
 
 :page_facing_up: [Project Page](https://www.gibberlings3.net/mods/tweaks/lore)  
-:page_facing_up: [Readme](https://gibberlings3.github.io/Documentation/readmes/readme-cdlore.html)
+:page_facing_up: [Readme](https://gibberlings3.github.io/Documentation/readmes/readme-cdlore.html)  
 :page_facing_up: [Forum](https://www.gibberlings3.net/forums/forum/28-miscellaneous-released-mods/) 
 
 ## 
