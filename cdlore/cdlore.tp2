@@ -10,10 +10,14 @@ LANGUAGE ~English~ ~english~
   ~cdlore/languages/english/game.tra~
 
 LANGUAGE ~Polski (Cahir)~ ~polish~ 
+  ~cdlore/languages/english/weidu.tra~
+  ~cdlore/languages/english/game.tra~
   ~cdlore/languages/polish/weidu.tra~
   ~cdlore/languages/polish/game.tra~
 
 LANGUAGE ~Russian (yota13)~ ~russian~ 
+  ~cdlore/languages/english/weidu.tra~
+  ~cdlore/languages/english/game.tra~
   ~cdlore/languages/russian/weidu.tra~
   ~cdlore/languages/russian/game.tra~
 
