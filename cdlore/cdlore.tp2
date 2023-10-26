@@ -1,7 +1,7 @@
 BACKUP ~weidu_external/cdlore/backup~ // location to store files for uninstall purposes
 SUPPORT ~https://www.gibberlings3.net/forums/forum/28-miscellaneous-released-mods/~
 
-VERSION ~v4~
+VERSION ~v5~
 
 README ~cdlore/languages/%LANGUAGE%/readme-cdlore.html~ ~cdlore/readme-cdlore.html~
 
