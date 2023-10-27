@@ -76,6 +76,7 @@ DEFINE_ACTION_FUNCTION cd_lore_wrapup
     cd_wrapup_martial = 0
     cd_wrapup_party = 0
     cd_wrapup_monster = 0
+    cd_wrapup_area = 0
 BEGIN   
 
   // first delete the old end blocks
