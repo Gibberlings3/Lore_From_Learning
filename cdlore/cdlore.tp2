@@ -5,6 +5,14 @@ VERSION ~v8~
 
 README ~cdlore/languages/%LANGUAGE%/readme-cdlore.html~ ~cdlore/readme-cdlore.html~
 
+ALWAYS 
+
+  ACTION_IF !COMPONENT_NUMBER AND !VARIABLE_IS_SET actions_per_rest BEGIN // skip for translator component, only do once
+    INCLUDE ~cdlore/lib/common.tpa~ END
+  END 
+
+END 
+
 LANGUAGE ~English~ ~english~ 
   ~cdlore/languages/english/weidu.tra~
   ~cdlore/languages/english/game.tra~
@@ -62,8 +70,6 @@ BEGIN @1000 DESIGNATED 10 // books provide lore
 LABEL "cd_lore_from_learning_books"
 REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
-ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
-
 EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/action.baf~ // this sets the action counter for the books
 
 INCLUDE ~cdlore/lib/booklist.tpa~     // imports list of books
@@ -94,8 +100,6 @@ BEGIN @2000 DESIGNATED 20 // weapon profs provide lore
 LABEL "cd_lore_from_learning_martial"
 REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
-ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
-
 ACTION_IF count_weapon_styles THEN BEGIN OUTER_SET jump = 111 END ELSE BEGIN OUTER_SET jump = 115 END // clubs (115) and weapon styles (111-114) if indicated in customize.tpa
 
 OUTER_FOR (prof = 89 ; prof < 116 ; ++prof) BEGIN
@@ -118,8 +122,6 @@ LAF cd_lore_wrapup INT_VAR cd_wrapup_martial = 1 END
 BEGIN @3000 DESIGNATED 30 // weapon profs provide lore
 LABEL "cd_lore_from_learning_party"
 REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
-
-ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
 
 ACTION_FOR_EACH index IN 1 2 3 4 5 6 7 125 128 153 161 BEGIN // 1-7 are normal PC races, 125 vampire (Hexxat, Valen), 128 RAKSHASA (Verr'sza), 153 tiefling (Haer'dalis) 161 goblin (m'khiin)
  
@@ -148,8 +150,6 @@ BEGIN @4000 DESIGNATED 40 // weapon profs provide lore
 LABEL "cd_lore_from_learning_monster"
 REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
-ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
-
 OUTER_FOR (index = 100 ; index < 200 ; ++index) BEGIN
  
   EXTEND_BOTTOM ~dplayer3.bcs~ ~cdlore/baf/monster.baf~ EVALUATE_BUFFER
@@ -169,8 +169,6 @@ LAF cd_lore_wrapup INT_VAR cd_wrapup_monster = 1 END
 BEGIN @5000 DESIGNATED 50 // areas provide lore
 LABEL "cd_lore_from_learning_area"
 REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
-
-ACTION_IF !VARIABLE_IS_SET actions_per_rest THEN BEGIN INCLUDE ~cdlore/lib/common.tpa~ END
 
 // all master areas worth 1 point
 COPY_EXISTING ~mastarea.2da~ ~override~
