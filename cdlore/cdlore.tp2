@@ -7,9 +7,9 @@ README ~cdlore/languages/%LANGUAGE%/readme-cdlore.html~ ~cdlore/readme-cdlore.ht
 
 ALWAYS 
 
-  ACTION_IF !COMPONENT_NUMBER AND !VARIABLE_IS_SET actions_per_rest BEGIN // skip for translator component, only do once
-    INCLUDE ~cdlore/lib/common.tpa~ END
-  END 
+  ACTION_IF ((!VARIABLE_IS_SET actions_per_rest) AND (COMPONENT_NUMBER != 0)) THEN BEGIN 
+    INCLUDE ~cdlore/lib/common.tpa~ 
+  END
 
 END 
 
