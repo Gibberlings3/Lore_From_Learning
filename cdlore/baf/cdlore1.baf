@@ -1,0 +1,20 @@
+IF 
+  Global("cd_lore_clean_slate","LOCALS",0)
+  Global("cd_lore_spawn","GLOBAL",1)
+THEN 
+  RESPONSE #100
+    SetGlobal("cd_lore_clean_slate","LOCALS",1)
+    SetGlobal("cd_lore_actions","GLOBAL",0)
+    SetGlobalTimer("cd_lore_spawn_safety","GLOBAL",300)
+    SetGlobal("cd_lore_spawn","GLOBAL",2)
+END     
+
+IF
+  OR(2)
+    GlobalTimerExpired("cd_lore_spawn_safety","GLOBAL")
+    Global("cd_lore_spawn","GLOBAL",3)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_spawn","GLOBAL",0)
+    DestroySelf()
+END   

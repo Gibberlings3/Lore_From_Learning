@@ -1,33 +1,29 @@
 IF
-  GlobalGT("cd_lore_class_total","GLOBAL",%other_classes%)
+  GlobalGT("cd_lore_class_total","LOCALS",%other_classes%)
 THEN
   RESPONSE #100
-    SetGlobal("cd_lore_class_total","GLOBAL",0)
+    SetGlobal("cd_lore_class_total","LOCALS",0)
     IncrementGlobal("cd_lore_class_time","GLOBAL",1)
-    Continue()
 END
 
 IF
-  !Global("cd_lore_class_total","GLOBAL",0)
+  !Global("cd_lore_class_total","LOCALS",0)
 THEN
   RESPONSE #100
-    SetGlobal("cd_lore_class_total","GLOBAL",0)
-    Continue()
+    SetGlobal("cd_lore_class_total","LOCALS",0)
 END
 
 IF
-  GlobalGT("cd_lore_race_total","GLOBAL",%other_races%)
+  GlobalGT("cd_lore_race_total","LOCALS",%other_races%)
 THEN
   RESPONSE #100
-    SetGlobal("cd_lore_race_total","GLOBAL",0)
+    SetGlobal("cd_lore_race_total","LOCALS",0)
     IncrementGlobal("cd_lore_race_time","GLOBAL",1)
-    Continue()
 END
 
 IF
-  !Global("cd_lore_race_total","GLOBAL",0)
+  !Global("cd_lore_race_total","LOCALS",0)
 THEN
   RESPONSE #100
-    SetGlobal("cd_lore_race_total","GLOBAL",0)
-    Continue()
+    SetGlobal("cd_lore_race_total","LOCALS",0)
 END

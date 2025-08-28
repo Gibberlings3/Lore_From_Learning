@@ -70,23 +70,24 @@ BEGIN @1000 DESIGNATED 10 // books provide lore
 LABEL "cd_lore_from_learning_books"
 REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
-EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/action.baf~ // this sets the action counter for the books
+EXTEND_TOP ~cdlore5.bcs~ ~cdlore/baf/book_bottom.baf~ EVALUATE_BUFFER
 
 INCLUDE ~cdlore/lib/booklist.tpa~     // imports list of books
 
 ACTION_PHP_EACH cd_book_strings AS cdbook => string BEGIN
 
-  ACTION_IF FILE_EXISTS_IN_GAME ~%cdbook_0%.itm~ BEGIN
-  
-    OUTER_SET cd_action_min = ((actions_per_rest + 1) - cdbook_2)  
-    EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/book.baf~ EVALUATE_BUFFER
+  ACTION_FOR_EACH book IN ~_%cdbook_0%~ ~%cdbook_0%~ BEGIN 
+
+    ACTION_IF FILE_EXISTS_IN_GAME ~%book%.itm~ BEGIN
     
-  END
+      OUTER_SET cd_action_min = ((actions_per_rest + 1) - cdbook_2)  
+      EXTEND_TOP ~cdlore5.bcs~ ~cdlore/baf/book.baf~ EVALUATE_BUFFER
+      
+    END
+    
+  END   
 
 END  
-
-LAF cd_lore_wrapup INT_VAR cd_wrapup_books = 1 END
-
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -105,11 +106,11 @@ ACTION_IF count_weapon_styles THEN BEGIN OUTER_SET jump = 111 END ELSE BEGIN OUT
 OUTER_FOR (prof = 89 ; prof < 116 ; ++prof) BEGIN
 
   ACTION_IF prof = 108 THEN BEGIN OUTER_SET prof = jump END  
-  EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/martial.baf~ EVALUATE_BUFFER
+  EXTEND_BOTTOM ~cdlore2.bcs~ ~cdlore/baf/martial.baf~ EVALUATE_BUFFER
 
 END   
 
-LAF cd_lore_wrapup INT_VAR cd_wrapup_martial = 1 END
+EXTEND_BOTTOM ~cdlore2.bcs~ ~cdlore/baf/martial_bottom.baf~ EVALUATE_BUFFER
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -125,18 +126,19 @@ REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
 ACTION_FOR_EACH index IN 1 2 3 4 5 6 7 125 128 153 161 BEGIN // 1-7 are normal PC races, 125 vampire (Hexxat, Valen), 128 RAKSHASA (Verr'sza), 153 tiefling (Haer'dalis) 161 goblin (m'khiin)
  
-  EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/race.baf~ EVALUATE_BUFFER
+  EXTEND_BOTTOM ~cdlore1.bcs~ ~cdlore/baf/race.baf~ EVALUATE_BUFFER
 
 END 
 
 ACTION_FOR_EACH index IN 19 20 21 202 203 204 205 206 207 208 209 BEGIN // sorcerer, monk, shaman, mage_all, fighter_all, cleric_all, thief_all, bard_all, paladin_all, druid_all, ranger_all
  
-  EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/class.baf~ EVALUATE_BUFFER
+  EXTEND_BOTTOM ~cdlore1.bcs~ ~cdlore/baf/class.baf~ EVALUATE_BUFFER
 
 END     
 
-EXTEND_BOTTOM ~player1d.bcs~ ~cdlore/baf/party.baf~  EVALUATE_BUFFER
-LAF cd_lore_wrapup INT_VAR cd_wrapup_party = 1 END
+EXTEND_BOTTOM ~cdlore1.bcs~ ~cdlore/baf/party.baf~  EVALUATE_BUFFER
+
+EXTEND_BOTTOM ~cdlore1.bcs~ ~cdlore/baf/party_bottom.baf~ EVALUATE_BUFFER
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -150,13 +152,15 @@ BEGIN @4000 DESIGNATED 40 // weapon profs provide lore
 LABEL "cd_lore_from_learning_monster"
 REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
-OUTER_FOR (index = 100 ; index < 200 ; ++index) BEGIN
+OUTER_FOR (index = 100 ; index < 255 ; ++index) BEGIN
+
+  ACTION_IF index = 201 BEGIN OUTER_SET index = 216 END // skip random weapon section
  
   EXTEND_BOTTOM ~dplayer3.bcs~ ~cdlore/baf/monster.baf~ EVALUATE_BUFFER
 
 END 
 
-LAF cd_lore_wrapup INT_VAR cd_wrapup_monster = 1 END
+EXTEND_BOTTOM ~cdlore3.bcs~ ~cdlore/baf/monster_bottom.baf~ EVALUATE_BUFFER
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
@@ -172,6 +176,7 @@ REQUIRE_PREDICATE GAME_IS ~bg2 tob tutu tutu_totsc bgt bgee bg2ee eet~ @2
 
 // all master areas worth 1 point
 COPY_EXISTING ~mastarea.2da~ ~override~
+              ~sodmarea.2da~ ~override~ // sod master area
   REPLACE_EVALUATE ~^\([^ %TAB%]+\)\([ %TAB%]+value\)~ BEGIN
     SPRINT area ~%MATCH1%~
     TO_UPPER area
@@ -179,7 +184,7 @@ COPY_EXISTING ~mastarea.2da~ ~override~
       ~%area%~ => 1
     END
   END ~%MATCH1%%MATCH2%~
-  BUT_ONLY  
+  BUT_ONLY IF_EXISTS 
 
 INCLUDE ~cdlore/lib/arealist.tpa~ // override/append values to list built from mastarea
 
@@ -196,4 +201,4 @@ ACTION_PHP_EACH cd_areas AS area => value BEGIN
     
 END  
 
-LAF cd_lore_wrapup INT_VAR cd_wrapup_area = 1 END
+EXTEND_BOTTOM ~cdlore4.bcs~ ~cdlore/baf/area_bottom.baf~ EVALUATE_BUFFER

@@ -1,0 +1,7 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_spawn","GLOBAL",0)
+    DestroySelf()
+END   

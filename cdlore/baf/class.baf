@@ -1,5 +1,5 @@
 IF
-  Global("cd_lore_class_%index%","GLOBAL",0)
+  Global("cd_lore_class_%index%","LOCALS",0)
   !Class(Player1,%index%)
   OR(5)    
     Class(Player2,%index%)
@@ -9,7 +9,6 @@ IF
     Class(Player6,%index%)
 THEN
   RESPONSE #100
-    SetGlobal("cd_lore_class_%index%","GLOBAL",1)
-    IncrementGlobal("cd_lore_class_total","GLOBAL",1)
-    Continue()
+    SetGlobal("cd_lore_class_%index%","LOCALS",1)
+    IncrementGlobal("cd_lore_class_total","LOCALS",1)
 END 

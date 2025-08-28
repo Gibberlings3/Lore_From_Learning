@@ -1,0 +1,7 @@
+IF
+  GlobalTimerExpired("cd_lore_spawn_safety","GLOBAL")
+  GlobalGT("cd_lore_spawn","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("cd_lore_spawn","GLOBAL",0)
+END   

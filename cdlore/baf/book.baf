@@ -1,13 +1,12 @@
 IF
   CheckStatGT(Player1,8,INT)
-  PartyHasItem("%tutu_var%%cdbook_0%")
-  Global("cd_lore_%cdbook_0%_check","GLOBAL",0)
+  PartyHasItem("%book%")
+  Global("cd_lore_%cdbook_0%_check","GLOBAL",0) // use %cdbook_0% instead of %book% so that _book40 and book40 are treated as one book
   GlobalLT("CD_lore_actions","GLOBAL",%cd_action_min%)
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_%cdbook_0%_check","GLOBAL",1)
     IncrementGlobal("cd_lore_books","GLOBAL",%cdbook_1%)
-    DisplayString(Myself,@%string%)
+    DisplayString(Player1,@%string%)
     IncrementGlobal("cd_lore_actions","GLOBAL",%cdbook_2%)
-    Continue()
 END    

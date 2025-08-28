@@ -1,0 +1,9 @@
+IF
+  Global("cd_lore_spawn","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("cd_lore_spawn_safety","GLOBAL",300)
+    SetGlobal("cd_lore_spawn","GLOBAL",1)
+    CreateCreatureObject("cdlore",Player1,0,0,0)
+    RestParty()
+END   

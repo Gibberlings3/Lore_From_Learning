@@ -1,5 +1,5 @@
 IF
-  Global("cd_lore_race_%index%","GLOBAL",0)
+  Global("cd_lore_race_%index%","LOCALS",0)
   !Race(Player1,%index%)
   OR(5)
     Race(Player2,%index%)
@@ -9,7 +9,6 @@ IF
     Race(Player6,%index%)
 THEN
   RESPONSE #100
-    SetGlobal("cd_lore_race_%index%","GLOBAL",1)
-    IncrementGlobal("cd_lore_race_total","GLOBAL",1)
-    Continue()
+    SetGlobal("cd_lore_race_%index%","LOCALS",1)
+    IncrementGlobal("cd_lore_race_total","LOCALS",1)
 END 

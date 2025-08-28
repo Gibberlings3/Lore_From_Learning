@@ -1,4 +1,5 @@
 IF
+  Global("cd_lore_spawn","GLOBAL",2)
   GlobalGT("cd_lore_books","GLOBAL",%books_to_read_min%)
   GlobalLT("cd_lore_books_total_bonuses","GLOBAL",%max_lore_from_books_bcs%)
 THEN
@@ -6,5 +7,5 @@ THEN
     IncrementGlobal("cd_lore_books","GLOBAL",-%books_to_read%)
     IncrementGlobal("cd_lore_books_total_bonuses","GLOBAL",1)
     ApplySpellRES("cdlore1",Player1)
-    RestParty()
+    SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    

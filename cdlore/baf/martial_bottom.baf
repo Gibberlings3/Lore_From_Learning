@@ -1,4 +1,5 @@
 IF
+  Global("cd_lore_spawn","GLOBAL",2)
   GlobalGT("cd_lore_prof_total","GLOBAL",%martial_min%)
   GlobalLT("cd_lore_prof_total","GLOBAL",100)
 THEN
@@ -6,10 +7,11 @@ THEN
     SetGlobal("cd_lore_prof_total","GLOBAL",100)
     ApplySpellRES("cdlore1",Myself)
     DisplayString(Myself,%cdlore_string_2002%)
-    RestParty()
+    SetGlobal("cd_lore_spawn","GLOBAL",3)
 END 
 
 IF
+  Global("cd_lore_spawn","GLOBAL",2)
   Global("cd_lore_grandmastery","GLOBAL",0)
   OR(20)
     CheckStat(Player1,5,89)  // PROFICIENCYBASTARDSWORD
@@ -37,5 +39,5 @@ THEN
     SetGlobal("cd_lore_grandmastery","GLOBAL",1)
     ApplySpellRES("cdlore1",Myself)
     DisplayString(Myself,%cdlore_string_2001%)
-    RestParty()
+    SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    

@@ -1,7 +1,7 @@
 IF
-  GlobalGT("cd_lore_actions","GLOBAL",0)
+  Global("cd_lore_reset_actions","GLOBAL",1)
 THEN
   RESPONSE #100
+    SetGlobal("cd_lore_reset_actions","GLOBAL",0)
     SetGlobal("cd_lore_actions","GLOBAL",0)
-    Continue()
 END   
