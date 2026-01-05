@@ -1,0 +1,15 @@
+// Estas son cadenas utilizadas ÚNICAMENTE por WeiDU para instalar el mod y no se utilizan en el juego.
+
+   @1 = ~Es necesario instalar DLC Merger antes de poder instalar mods en este juego. Consulte el archivo Léame para obtener más información y el enlace para descargar DLC Merger.~
+   @2 = ~Lore From Learning no funciona actualmente para este juego. Consulte el archivo Léame o el foro para obtener más detalles.~
+   @3 = ~Advertencia: La compatibilidad con este juego es provisional por el momento. Por favor, informa de cualquier error en el foro.~
+   
+@1000 = ~Los libros proporcionan bonificaciones de conocimiento.~
+
+@2000 = ~El conocimiento de las armas proporciona bonificaciones de sabiduría.~
+
+@3000 = ~Los miembros del grupo proporcionan bonificaciones de conocimiento.~
+
+@4000 = ~Derrotar a los monstruos proporciona bonificaciones de conocimiento.~
+
+@5000 = ~Explorar zonas proporciona bonificaciones de conocimiento.~
