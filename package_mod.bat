@@ -34,6 +34,6 @@ REM /* MODIFY: if you want to avoid making filenames lowercase, you can disable 
 set lowercase_filenames=1
 
 REM /* this performs the actual packaging */
-call "%~dp0..\ModPackaging\\utilities\complete_packaging.bat"
+call "%~dp0..\ModPackaging\utilities\complete_packaging.bat"
 
 endlocal
