@@ -5,8 +5,8 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_prof_total","GLOBAL",100)
-    ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,%cdlore_string_2002%)
+    ApplySpellRES("cdlore1",Player1)
+    DisplayString(Player1,%cdlore_string_2002%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END 
 
@@ -37,7 +37,7 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_grandmastery","GLOBAL",1)
-    ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,%cdlore_string_2001%)
+    ApplySpellRES("cdlore1",Player1)
+    DisplayString(Player1,%cdlore_string_2001%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    

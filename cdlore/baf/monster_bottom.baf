@@ -5,8 +5,8 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_monster_bonus","GLOBAL",1) 
-    ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,%cdlore_string_4001%)
+    ApplySpellRES("cdlore1",Player1)
+    DisplayString(Player1,%cdlore_string_4001%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    
 
@@ -17,8 +17,8 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_monster_bonus","GLOBAL",2) 
-    ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,%cdlore_string_4002%)
+    ApplySpellRES("cdlore1",Player1)
+    DisplayString(Player1,%cdlore_string_4002%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    
 
@@ -29,8 +29,8 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_monster_bonus","GLOBAL",3) 
-    ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,%cdlore_string_4003%)
+    ApplySpellRES("cdlore1",Player1)
+    DisplayString(Player1,%cdlore_string_4003%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    
       

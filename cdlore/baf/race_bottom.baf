@@ -21,8 +21,8 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_race_bonus","GLOBAL",1) 
-    ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,@3001)
+    ApplySpellRES("cdlore1",Player1)
+    DisplayString(Player1,@3001)
     RestParty()
 END    
 
@@ -32,8 +32,8 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_race_bonus","GLOBAL",2) 
-    ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,@3002)
+    ApplySpellRES("cdlore1",Player1)
+    DisplayString(Player1,@3002)
     RestParty()
 END    
 
@@ -43,8 +43,8 @@ IF
 THEN
   RESPONSE #100
     SetGlobal("cd_lore_race_bonus","GLOBAL",3) 
-    ApplySpellRES("cdlore1",Myself)
-    DisplayString(Myself,@3003)
+    ApplySpellRES("cdlore1",Player1)
+    DisplayString(Player1,@3003)
     RestParty()
 END    
       

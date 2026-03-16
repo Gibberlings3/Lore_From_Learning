@@ -6,7 +6,7 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_class_bonus","GLOBAL",1) 
     ApplySpellRES("cdlore1",Player1)
-    DisplayString(Myself,%cdlore_string_3004%)
+    DisplayString(Player1,%cdlore_string_3004%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    
 
@@ -18,7 +18,7 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_class_bonus","GLOBAL",2) 
     ApplySpellRES("cdlore1",Player1)
-    DisplayString(Myself,%cdlore_string_3005%)
+    DisplayString(Player1,%cdlore_string_3005%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    
 
@@ -30,7 +30,7 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_class_bonus","GLOBAL",3) 
     ApplySpellRES("cdlore1",Player1)
-    DisplayString(Myself,%cdlore_string_3006%)
+    DisplayString(Player1,%cdlore_string_3006%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    
 
@@ -42,7 +42,7 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_race_bonus","GLOBAL",1) 
     ApplySpellRES("cdlore1",Player1)
-    DisplayString(Myself,%cdlore_string_3001%)
+    DisplayString(Player1,%cdlore_string_3001%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    
 
@@ -54,7 +54,7 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_race_bonus","GLOBAL",2) 
     ApplySpellRES("cdlore1",Player1)
-    DisplayString(Myself,%cdlore_string_3002%)
+    DisplayString(Player1,%cdlore_string_3002%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    
 
@@ -66,7 +66,7 @@ THEN
   RESPONSE #100
     SetGlobal("cd_lore_race_bonus","GLOBAL",3) 
     ApplySpellRES("cdlore1",Player1)
-    DisplayString(Myself,%cdlore_string_3003%)
+    DisplayString(Player1,%cdlore_string_3003%)
     SetGlobal("cd_lore_spawn","GLOBAL",3)
 END    
       
